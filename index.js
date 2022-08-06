@@ -4,26 +4,56 @@ function getComputerChoice() {
     return choices[randNum]
 }
 
-function playRound(playerSelection, computerChoice = getComputerChoice()) {
+function playRound(playerSelection, computerChoice = getComputerChoice(), isWon = false, isLose = false) {
     computerChoice = computerChoice.toLowerCase()
     playerSelection = playerSelection.toLowerCase()
     if (playerSelection === computerChoice) {
-        return `It's a draw!!!`
+        return [`It's a draw!!!`, isWon, isLose]
     } else if (playerSelection == 'rock' && computerChoice == 'paper') {
-        return `You lose! Paper beats Rock`
+        isLose = true
+        return [`You lose! Paper beats Rock`, isWon, isLose]
     } else if (playerSelection == 'rock' && computerChoice == 'scissors') {
-        return `You Win! Rock beats Scissors`
+        isWon = true
+        return [`You Win! Rock beats Scissors`, isWon, isLose]
     } else if (playerSelection == 'paper' && computerChoice == 'rock') {
-        return `You Win! Paper beats Rock`
+        isWon = true
+        return [`You Win! Paper beats Rock`, isWon, isLose]
     } else if (playerSelection == 'paper' && computerChoice == 'scissors') {
-        return `You lose! Scissors beats paper`
+        isLose = true
+        return [`You lose! Scissors beats paper`, isWon, isLose]
     } else if (playerSelection == 'scissors' && computerChoice == 'paper') {
-        return `You Win! Scissors beats Paper`
+        isWon = true
+        return [`You Win! Scissors beats Paper`, isWon, isLose]
     } else if (playerSelection == 'scissors' && computerChoice == 'rock') {
-        return `You lose! Rock beats Scissors`
+        isLose = true
+        return [`You lose! Rock beats Scissors`, isWon, isLose]
     }
 }
 
-console.log(playRound('roCk'))
-console.log(playRound('paPeR'))
-console.log(playRound('scissors'))
+function game() {
+    let playerWin = 0
+    let computerWin = 0
+    for(let i = 0; i < 5; i++) {
+        const playerChoice = prompt('Enter a value("rock", "paper", "scissors")')
+        const [message, win, lose] = playRound(playerChoice)
+        if (win == lose) {
+            playerWin = playerWin 
+            computerWin = computerWin 
+        } else if (win) {
+            playerWin += 1
+        } else {
+            computerWin += 1
+        }
+        console.log(message)
+    }
+
+    if (playerWin > computerWin) {
+        console.log(`You Won!!!  ${playerWin} - ${computerWin}`)
+    } else if (computerWin > playerWin) {
+        console.log(`Computer Won!!!  ${playerWin} - ${computerWin}`)
+    } else {
+        console.log(`It's a draw!!!  ${playerWin} - ${computerWin}`)
+    }
+}
+
+game()
