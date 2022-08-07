@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    background: #333;
+    color: wheat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.container {
+    height: 70vh;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scores {
+    display: flex;
+    gap: 20px;
+}
+
+.player,
+.computer {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.player-hand,
+.computer-hand {
+    font-size: 80px;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message {
+    font-size: 40px;
+    font-weight: 600;
+    width: 90%;
+    text-align: center;
+}
+
+.player-hands {
+    display: flex;
+    gap: 20px;
+}
+
+.hand {
+    width: 90px;
+    height: 50px;
+    border: none;
+    border-radius: 7px;
+    color: darkslategray;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.win {
+    font-size: 80px;
+    font-weight: bolder;
+}
